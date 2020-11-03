@@ -6,9 +6,9 @@ namespace AssemblyBrowserTester
     [TestClass]
     public class UnitTest
     {
-        string _firstTestPath = @"C:\5 semester\MPP\Lab_1\TracerUtilsUnitTest\bin\Debug\netcoreapp3.1\TracerUtils.dll";
+        string _firstTestPath = @"C:\Users\Vladzensan\Desktop\MPP-Lab-3-master\AssemblyBrowser\bin\Debug\netcoreapp3.1\AssemblyBrowser.dll";
 
-        string _secondTestPath = @"C:\5 semester\MPP\Lab_3\ExtensionMethodTest\bin\Debug\netcoreapp3.1\ExtensionMethodTest.dll";
+        string _secondTestPath = @"C:\Users\Vladzensan\Desktop\MPP-Lab-3-master\ExtensionMethodTest\bin\Debug\netcoreapp3.1\ExtensionMethodTest.dll";
 
         [TestMethod]
         public void ExtensionMethodTest()
@@ -35,27 +35,10 @@ namespace AssemblyBrowserTester
             var assemblyData = assemblyBrowser.assemblyData;
             Assert.AreEqual(1, assemblyData.NameSpaces.Values.Count);
             NameSpaceData nameSpaceData = null; 
-            assemblyData.NameSpaces.TryGetValue("TracerUtils", out nameSpaceData);
-            Assert.AreEqual(5, nameSpaceData.TypesList.Count);
-            Assert.IsTrue(assemblyData.NameSpaces.ContainsKey("TracerUtils"));
-            Assert.AreEqual("ITracer", nameSpaceData.TypesList[0].Name);
-            Assert.AreEqual(5, nameSpaceData.TypesList[1].Properties.Count);
-            Assert.AreEqual("threads", nameSpaceData.TypesList[3].Fields[0].Name);
-        }
-
-        [TestMethod]
-        public void NegativeTestMethod()
-        {
-            AssemblyBrowser.AssemblyBrowser assemblyBrowser = new AssemblyBrowser.AssemblyBrowser(_firstTestPath);
-            var assemblyData = assemblyBrowser.assemblyData;
-            Assert.AreNotEqual(0, assemblyData.NameSpaces.Values.Count);
-            NameSpaceData nameSpaceData = null;
-            assemblyData.NameSpaces.TryGetValue("TracerUtils", out nameSpaceData);
-            Assert.AreNotEqual(0, nameSpaceData.TypesList.Count);
-            Assert.IsFalse(assemblyData.NameSpaces.ContainsKey("Tracer"));
-            Assert.AreNotEqual("String", nameSpaceData.TypesList[0].Name);
-            Assert.AreNotEqual(0, nameSpaceData.TypesList[1].Properties.Count);
-            Assert.AreNotEqual("thread", nameSpaceData.TypesList[3].Fields[0].Name);
+            assemblyData.NameSpaces.TryGetValue("AssemblyBrowser", out nameSpaceData);
+            Assert.AreEqual(7, nameSpaceData.TypesList.Count);
+            Assert.IsTrue(assemblyData.NameSpaces.ContainsKey("AssemblyBrowser"));
+            Assert.AreEqual(1, nameSpaceData.TypesList[1].Properties.Count);
         }
     }
 }
